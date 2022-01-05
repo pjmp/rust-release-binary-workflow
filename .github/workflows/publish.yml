@@ -3,7 +3,7 @@ name: Publish
 on:
   push:
     tags:
-      - "v[0-9]+.[0-9]+.[0-9]+"
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   publish:
@@ -12,24 +12,24 @@ jobs:
     strategy:
       matrix:
         name: [
-            # windows,
-            # macos,
+            windows,
+            macos,
             linux
         ]
 
         include:
           - name: linux
             os: ubuntu-latest
-            artifact_name: sunny
-            asset_name: sunny-linux-amd64
-          # - name: windows
-          #   os: windows-latest
-          #   artifact_name: sunny.exe
-          #   asset_name: sunny-windows-amd64
-          # - name: macos
-          #   os: macos-latest
-          #   artifact_name: sunny
-          #   asset_name: sunny-macos-amd64
+            artifact_name: PACKAGE_NAME
+            asset_name: PACKAGE_NAME-linux-amd64
+          - name: windows
+            os: windows-latest
+            artifact_name: PACKAGE_NAME.exe
+            asset_name: PACKAGE_NAME-windows-amd64
+          - name: macos
+            os: macos-latest
+            artifact_name: PACKAGE_NAME
+            asset_name: PACKAGE_NAME-macos-amd64
 
     steps:
     - uses: actions/checkout@v1
